@@ -161,9 +161,27 @@
     <p class="mt-4 text-sm">NGE - Nueva Generación Emprendedora · Unidos Ganamos Más</p>
 </footer>
 
-<script>
-    function toggleMenu(){document.getElementById('sidebar').classList.toggle('active')}
-    let slide=0;const slides=document.querySelectorAll('.carrusel-slide');if(slides.length){setInterval(()=>{slides[slide].classList.remove('active');slide=(slide+1)%slides.length;slides[slide].classList.add('active')},4000)}
-</script>
+    </div> <!-- cierre del container -->
+
+    <footer class="footer"> ... </footer>
+
+    <script>
+        // Aquí están tus funciones (toggleMenu, carrusel, etc.)
+
+        function compartirSitio() {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Mira este sitio web',
+                    url: url
+                });
+            } else {
+                navigator.clipboard.writeText(url);
+                alert('📋 Enlace copiado al portapapeles');
+            }
+        }
+    </script>
+
 </body>
 </html>
