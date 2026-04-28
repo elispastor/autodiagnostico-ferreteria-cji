@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Autodiagnóstico y Cerrajería CJI | Llaves y Escáner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0b1c3a,#1e3a5f);color:white}
+        .menu-ham{position:fixed;top:20px;right:20px;z-index:1000}
+        .menu-ham button{background:rgba(251,191,36,0.9);color:#0b1c3a;border:none;padding:12px;border-radius:50%;font-size:1.5rem;cursor:pointer}
+        .sidebar{position:fixed;top:0;right:-280px;width:280px;height:100vh;background:rgba(17,43,79,0.98);backdrop-filter:blur(20px);transition:right 0.3s;z-index:999;padding:80px 20px 20px}
+        .sidebar.active{right:0}
+        .sidebar nav{display:flex;flex-direction:column;gap:20px}
+        .sidebar nav a{color:white;font-size:1.2rem;text-decoration:none;padding:12px;display:block;border-bottom:1px solid rgba(251,191,36,0.3)}
+        .sidebar nav a:hover{color:#fbbf24}
+        .card{background:rgba(17,43,79,0.9);backdrop-filter:blur(10px);border:1px solid rgba(251,191,36,0.3);border-radius:20px;padding:30px;margin-bottom:30px}
+        .btn{padding:12px 30px;border-radius:50px;font-weight:bold;text-decoration:none;display:inline-block;transition:transform 0.2s}
+        .btn:hover{transform:scale(1.05)}
+        .btn-primary{background:linear-gradient(45deg,#fbbf24,#f59e0b);color:#0b1c3a}
+        .btn-wsp{background:#25d366;color:white}
+        .btn-call{background:#34B7F1;color:white}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;z-index:1000;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+        .call-float{position:fixed;bottom:30px;right:105px;width:60px;height:60px;background:#34B7F1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;z-index:1000;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+        .carrusel{position:relative;height:300px;border-radius:20px;overflow:hidden;margin:30px 0}
+        .carrusel-slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.5s ease}
+        .carrusel-slide.active{opacity:1}
+        .carrusel-slide img{width:100%;height:100%;object-fit:cover}
+        .servicios-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px}
+        .servicio-item{background:rgba(0,0,0,0.3);border-radius:30px;padding:8px 18px;font-size:0.85rem}
+        .footer{background:rgba(11,28,58,0.95);border-top:2px solid rgba(251,191,36,0.3);padding:40px 20px;text-align:center;margin-top:60px}
+        @media (max-width:768px){.call-float{right:100px}.carrusel{height:220px}}
+    </style>
+</head>
+<body>
+
+<div class="menu-ham"><button onclick="toggleMenu()"><i class="fas fa-bars"></i></button></div>
+<div class="sidebar" id="sidebar">
+    <button onclick="toggleMenu()" style="position:absolute;top:20px;right:20px;color:#fbbf24;font-size:1.5rem;background:none;border:none;">×</button>
+    <nav>
+        <a href="#inicio" onclick="toggleMenu()">🏠 Inicio</a>
+        <a href="#servicios" onclick="toggleMenu()">🔧 Servicios</a>
+        <a href="#galeria" onclick="toggleMenu()">📸 Galería</a>
+        <a href="#contacto" onclick="toggleMenu()">📞 Contacto</a>
+    </nav>
+</div>
+
+<a href="https://wa.me/573212260005?text=Hola,%20necesito%20un%20diagnóstico%20automotriz" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+573212260005" class="call-float"><i class="fas fa-phone-alt"></i></a>
+
+<div class="container mx-auto px-4 py-8 max-w-6xl">
+
+    <section id="inicio" class="text-center mb-12">
+        <img src="portada.png" alt="Autodiagnóstico y Cerrajería CJI" class="w-full rounded-2xl shadow-xl border border-amber-400">
+    </section>
+
+    <section id="galeria" class="card">
+        <h2 class="text-3xl font-bold text-amber-400 text-center mb-4">📸 EQUIPOS Y TRABAJOS</h2>
+        <div class="carrusel" id="carrusel">
+            <div class="carrusel-slide active"><img src="foto1.jpg" alt="Escáner automotriz"></div>
+            <div class="carrusel-slide"><img src="foto2.jpg" alt="Programación de llaves"></div>
+            <div class="carrusel-slide"><img src="foto3.jpg" alt="Cerrajería electrónica"></div>
+            <div class="carrusel-slide"><img src="foto4.jpg" alt="Smart Lock"></div>
+        </div>
+    </section>
+
+    <section id="servicios" class="card">
+        <h2 class="text-3xl font-bold text-amber-400 text-center mb-4">🔧 SERVICIOS ESPECIALIZADOS</h2>
+        <div class="servicios-grid">
+            <span class="servicio-item">✅ Escáner / Diagnóstico automotriz</span>
+            <span class="servicio-item">✅ Reparación de computadoras automotriz</span>
+            <span class="servicio-item">✅ Programación de llaves con microchip</span>
+            <span class="servicio-item">✅ Reparación de controles</span>
+            <span class="servicio-item">✅ Venta de controles y carcasas</span>
+            <span class="servicio-item">✅ Reparación de cerraduras y suichera</span>
+            <span class="servicio-item">✅ Ajuste de alarmas</span>
+            <span class="servicio-item">✅ Instalación de Smart Lock</span>
+            <span class="servicio-item">✅ Apertura de caja fuerte (sin perforar)</span>
+            <span class="servicio-item">✅ Copia de llaves</span>
+        </div>
+        <div class="text-center mt-4 p-4 bg-black/30 rounded-xl">
+            <p><strong class="text-amber-400">Ingeniero:</strong> Cristian Martínez</p>
+            <p><strong class="text-amber-400">Técnico:</strong> Jeferson Martínez</p>
+        </div>
+    </section>
+
+    <section id="contacto" class="card">
+        <h2 class="text-3xl font-bold text-amber-400 text-center mb-6">📞 CONTACTO</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <p><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i> <strong>Dirección:</strong></p>
+                <p class="ml-6">Av. 5a # 0-43 local 1 - Barrio La Merced, Cúcuta</p>
+                <p class="mt-4"><i class="fas fa-phone-alt text-amber-400 mr-2"></i> <strong>Teléfonos:</strong></p>
+                <p class="ml-6">321 226 0005 / 320 910 0822</p>
+            </div>
+            <div>
+                <a href="https://wa.me/573212260005" class="btn btn-wsp w-full text-center mb-3 flex items-center justify-center gap-2"><i class="fab fa-whatsapp text-xl"></i> WhatsApp</a>
+                <a href="tel:+573212260005" class="btn btn-call w-full text-center flex items-center justify-center gap-2"><i class="fas fa-phone-alt"></i> Llamar ahora</a>
+            </div>
+        </div>
+        <div class="mt-6">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.456789!2d-72.508789!3d7.893456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e42a5b8c9d4e2f1%3A0x123456789abcdef0!2sAv.%205a%20%230-43%2C%20La%20Merced%2C%20C%C3%BAcuta!5e0!3m2!1ses!2sco!4v1690000000000!5m2!1ses!2sco" 
+                class="w-full h-64 rounded-xl border-2 border-amber-400" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <p><strong>© 2026 Autodiagnóstico y Cerrajería CJI</strong> | Todos los derechos reservados</p>
+    <p>Av. 5a # 0-43 local 1 - Barrio La Merced, Cúcuta</p>
+    <div class="mt-4">
+        <a href="https://tutarjetadigital.netlify.app" class="btn-primary btn">📱 Tu Tarjeta Digital</a>
+    </div>
+    <p class="mt-4 text-sm">NGE - Nueva Generación Emprendedora · Unidos Ganamos Más</p>
+</footer>
+
+<script>
+    function toggleMenu(){document.getElementById('sidebar').classList.toggle('active')}
+    let slide=0;const slides=document.querySelectorAll('.carrusel-slide');if(slides.length){setInterval(()=>{slides[slide].classList.remove('active');slide=(slide+1)%slides.length;slides[slide].classList.add('active')},4000)}
+</script>
+</body>
+</html>
