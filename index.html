@@ -209,28 +209,28 @@
 
 <script>
     // Funciones para la oficina virtual
-    function copiarCodigo() {
-        const codigo = document.getElementById('codigoAfiliado').innerText;
-        navigator.clipboard.writeText(codigo);
-        alert('✅ Código ' + codigo + ' copiado');
-    }
+   function copiarCodigo() {
+    const codigo = document.getElementById('codigoAfiliado').innerText;
+    navigator.clipboard.writeText(codigo);
+    alert('✅ Código ' + codigo + ' copiado');
+}
 
-    const btnOficina = document.getElementById('btnOficina');
-    if (btnOficina) {
-        btnOficina.addEventListener('click', function() {
-            const panel = document.getElementById('panelOficina');
-            panel.classList.toggle('hidden');
-            if (!panel.classList.contains('hidden')) {
-                cargarReferidos();
-            }
-        });
-    }
+const btnOficina = document.getElementById('btnOficina');
+if (btnOficina) {
+    btnOficina.addEventListener('click', function() {
+        const panel = document.getElementById('panelOficina');
+        panel.classList.toggle('hidden');
+        if (!panel.classList.contains('hidden')) {
+            cargarReferidos();
+        }
+    });
+}
 
-    function cerrarOficina() {
-        document.getElementById('panelOficina').classList.add('hidden');
-    }
+function cerrarOficina() {
+    document.getElementById('panelOficina').classList.add('hidden');
+}
 
-    function cargarReferidos() {
+function cargarReferidos() {
     const tbody = document.getElementById('tablaRef');
     tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-amber-400/70">✨ Próximo referido aquí ✨</td></tr>';
     document.getElementById('totalRef').innerText = '0';
