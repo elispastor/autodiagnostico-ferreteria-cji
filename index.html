@@ -210,12 +210,10 @@
             </div>
             
             <div class="mt-4 text-center">
-                <a href="https://wa.me/573244913371?text=Hola,%20quiero%20activar%20mi%20tarjeta%20digital%20con%20el%20código%20NGE201%20(Cerrajería%20CJI)" class="btn-wsp inline-block py-2 px-4 rounded-full text-sm font-bold">
-                    📢 Invitar a más personas
-                </a>
-            </div>
-        </div>
-    </section>
+    <button onclick="invitarAmigos()" class="btn-wsp inline-block py-2 px-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 mx-auto">
+        <i class="fab fa-whatsapp text-lg"></i> Invitar a mis amigos
+    </button>
+</div>
 
 </div> <!-- cierre del container -->
    <!-- QR DE AFILIADO PARA AUTODIAGNÓSTICO Y CERRAJERÍA CJI -->
@@ -299,6 +297,20 @@
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
+    function invitarAmigos() {
+    const url = window.location.href; // Enlace de la tarjeta actual (la del afiliado)
+    const mensaje = `🎁 *¡Hola!* 🎁%0a%0aTe invito a obtener tu tarjeta digital y entrar al mundo de los negocios digitales.%0a%0a🔗 *Mi enlace de afiliado:* ${url}%0a%0a💡 *Código promocional:* NGE201%0a%0a⭐ *Plan PRO* ⭐%0a%0a👉 ¡Escanea el QR o haz clic en el enlace! 👈%0a%0aNGE - Nueva Generación Emprendedora`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Invitación a mi tarjeta digital',
+            text: 'Te invito a obtener tu tarjeta digital con mi código NGE201',
+            url: url
+        });
+    } else {
+        window.open(`https://wa.me/?text=${mensaje}`, '_blank');
+    }
+}
 </script>
 
 </body>
