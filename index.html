@@ -231,11 +231,11 @@
     }
 
     function cargarReferidos() {
-        // Datos de ejemplo (cuando tengas referidos reales, los cambias aquí)
-        const referidos = [
-            { nombre: "Carlos Ruiz", codigo: "REF001", plan: "Básico", comision: 5000 },
-            { nombre: "Ana Gómez", codigo: "REF002", plan: "Pro", comision: 10000 },
-        ];
+    const tbody = document.getElementById('tablaRef');
+    tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-amber-400/70">✨ Próximo referido aquí ✨</td></tr>';
+    document.getElementById('totalRef').innerText = '0';
+    document.getElementById('totalGan').innerText = '$0';
+}
         
         const tbody = document.getElementById('tablaRef');
         if (referidos.length === 0) {
