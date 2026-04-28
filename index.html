@@ -41,9 +41,12 @@
     <button onclick="toggleMenu()" style="position:absolute;top:20px;right:20px;color:#fbbf24;font-size:1.5rem;background:none;border:none;">×</button>
     <nav>
         <a href="#inicio" onclick="toggleMenu()">🏠 Inicio</a>
+        <a href="#nosotros" onclick="toggleMenu()">👥 Nosotros</a>
         <a href="#servicios" onclick="toggleMenu()">🔧 Servicios</a>
         <a href="#galeria" onclick="toggleMenu()">📸 Galería</a>
         <a href="#contacto" onclick="toggleMenu()">📞 Contacto</a>
+        <a href="#" onclick="compartirSitio()">📤 Compartir</a>
+<a href="#actualizar" onclick="toggleMenu()">🔄 Actualizar</a>
     </nav>
 </div>
 
@@ -65,6 +68,44 @@
             <div class="carrusel-slide"><img src="foto4.jpg" alt="Smart Lock"></div>
         </div>
     </section>
+    <!-- SECCIÓN NOSOTROS (todo junto) -->
+<section id="nosotros" class="card">
+    <h2 class="text-3xl font-bold text-amber-400 text-center mb-6">👥 NOSOTROS</h2>
+    
+    <!-- Quiénes Somos -->
+    <div class="text-center mb-8">
+        <i class="fas fa-users text-5xl text-amber-400 mb-3"></i>
+        <h3 class="text-2xl font-bold text-white">¿Quiénes Somos?</h3>
+        <p class="text-gray-300 mt-2 max-w-2xl mx-auto">En <strong class="text-amber-400">Autodiagnóstico y Cerrajería CJI</strong> somos un equipo profesional con más de 10 años de experiencia en diagnóstico automotriz y cerrajería de alta seguridad.</p>
+    </div>
+
+    <!-- Misión y Visión (dos columnas) -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-black/30 p-5 rounded-xl text-center">
+            <i class="fas fa-bullseye text-4xl text-amber-400 mb-2"></i>
+            <h3 class="text-xl font-bold text-white">Misión</h3>
+            <p class="text-gray-300 text-sm">Brindar servicios con tecnología de vanguardia, garantizando seguridad, rapidez y confianza.</p>
+        </div>
+        <div class="bg-black/30 p-5 rounded-xl text-center">
+            <i class="fas fa-eye text-4xl text-amber-400 mb-2"></i>
+            <h3 class="text-xl font-bold text-white">Visión</h3>
+            <p class="text-gray-300 text-sm">Ser líderes en seguridad y diagnóstico automotriz en Cúcuta, reconocidos por excelencia e innovación.</p>
+        </div>
+    </div>
+
+    <!-- Valores (píldoras) -->
+    <div class="text-center">
+        <i class="fas fa-star text-4xl text-amber-400 mb-3"></i>
+        <h3 class="text-xl font-bold text-white mb-3">Nuestros Valores</h3>
+        <div class="flex flex-wrap justify-center gap-2">
+            <span class="bg-black/40 rounded-full px-4 py-1 text-sm">🔒 Confianza</span>
+            <span class="bg-black/40 rounded-full px-4 py-1 text-sm">⚡ Rapidez</span>
+            <span class="bg-black/40 rounded-full px-4 py-1 text-sm">🛠️ Calidad</span>
+            <span class="bg-black/40 rounded-full px-4 py-1 text-sm">🤝 Honestidad</span>
+            <span class="bg-black/40 rounded-full px-4 py-1 text-sm">💡 Innovación</span>
+        </div>
+    </div>
+</section>
 
     <section id="servicios" class="card">
         <h2 class="text-3xl font-bold text-amber-400 text-center mb-4">🔧 SERVICIOS ESPECIALIZADOS</h2>
