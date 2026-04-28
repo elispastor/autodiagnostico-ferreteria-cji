@@ -145,6 +145,116 @@
             </iframe>
         </div>
     </section>
+    <!-- SECCIÓN SISTEMA DE REFERIDOS / OFICINA VIRTUAL (PLAN PRO) -->
+<section id="oficina-virtual" class="card text-center">
+    <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+        <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">⭐ PLAN PRO ⭐</span>
+        <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
+    </div>
+    <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 GANA CON NOSOTROS</h2>
+    <p class="text-gray-300 mb-4">Comparte tu código y recibe comisiones por cada referido que active su tarjeta digital.</p>
+    
+    <div class="bg-black/30 rounded-xl p-4 mb-4">
+        <p class="text-sm text-gray-300">TU CÓDIGO DE AFILIADO (PLAN PRO)</p>
+        <p class="text-3xl font-bold text-amber-400 tracking-wider" id="codigoAfiliado">NGE201</p>
+        <p class="text-xs text-gray-400 mt-1">NUEVA GENERACIÓN EMPRENDEDORA</p>
+        <button onclick="copiarCodigo()" class="btn-primary mt-2 py-2 px-6 text-sm rounded-full">📋 Copiar código</button>
+    </div>
+
+    <button id="btnOficina" class="btn-primary w-full py-3 rounded-xl text-lg font-bold flex items-center justify-center gap-2">
+        <i class="fas fa-user-tie"></i> Mi Oficina Virtual
+    </button>
+
+    <!-- Panel de la oficina (oculto al inicio) -->
+    <div id="panelOficina" class="hidden mt-6 p-4 bg-black/50 rounded-xl text-left">
+        <div class="flex justify-between items-center border-b border-amber-400 pb-2 mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📊 MIS REFERIDOS</h3>
+            <button onclick="cerrarOficina()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-black/30 p-3 rounded-xl text-center">
+                <p class="text-2xl font-bold text-amber-400" id="totalRef">0</p>
+                <p class="text-xs">Referidos activos</p>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl text-center">
+                <p class="text-2xl font-bold text-amber-400" id="totalGan">$0</p>
+                <p class="text-xs">Comisiones generadas</p>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="text-amber-400 border-b border-gray-600">
+                        <th class="text-left py-2">Nombre</th>
+                        <th class="text-left py-2">Código</th>
+                        <th class="text-left py-2">Plan</th>
+                        <th class="text-left py-2">Comisión</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaRef">
+                    <tr><td colspan="4" class="text-center py-4 text-gray-400">Cargando referidos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <a href="https://wa.me/573244913371?text=Hola,%20quiero%20activar%20mi%20tarjeta%20digital%20con%20el%20código%20NGE201%20(Cerrajería%20CJI)" class="btn-wsp inline-block py-2 px-4 rounded-full text-sm font-bold">
+                📢 Invitar a más personas
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Funciones para la oficina virtual
+    function copiarCodigo() {
+        const codigo = document.getElementById('codigoAfiliado').innerText;
+        navigator.clipboard.writeText(codigo);
+        alert('✅ Código ' + codigo + ' copiado');
+    }
+
+    const btnOficina = document.getElementById('btnOficina');
+    if (btnOficina) {
+        btnOficina.addEventListener('click', function() {
+            const panel = document.getElementById('panelOficina');
+            panel.classList.toggle('hidden');
+            if (!panel.classList.contains('hidden')) {
+                cargarReferidos();
+            }
+        });
+    }
+
+    function cerrarOficina() {
+        document.getElementById('panelOficina').classList.add('hidden');
+    }
+
+    function cargarReferidos() {
+        // Datos de ejemplo (cuando tengas referidos reales, los cambias aquí)
+        const referidos = [
+            { nombre: "Carlos Ruiz", codigo: "REF001", plan: "Básico", comision: 5000 },
+            { nombre: "Ana Gómez", codigo: "REF002", plan: "Pro", comision: 10000 },
+        ];
+        
+        const tbody = document.getElementById('tablaRef');
+        if (referidos.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-gray-400">Sin referidos aún</td></tr>';
+        } else {
+            tbody.innerHTML = referidos.map(r => `
+                <tr class="border-b border-gray-700">
+                    <td class="py-2">${r.nombre}</td>
+                    <td class="py-2">${r.codigo}</td>
+                    <td class="py-2">${r.plan}</td>
+                    <td class="py-2 text-amber-400">$${r.comision.toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+        document.getElementById('totalRef').innerText = referidos.length;
+        const totalGanancias = referidos.reduce((sum, r) => sum + r.comision, 0);
+        document.getElementById('totalGan').innerText = '$' + totalGanancias.toLocaleString();
+    }
+</script>
 
 </div> <!-- cierre del container -->
 
